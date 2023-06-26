@@ -1,0 +1,12 @@
+name: FischysWaypoints
+version: '${project.version}'
+main: me.fisch37.waypoints.FischysWaypoints
+api-version: '1.19'
+authors: [Fisch37]
+description: An interactive waypoints system for Spigot
+
+commands:
+  waypoints:
+    aliases: wps
+    description: Fischys Waypoint System
+    usage: /wps <add|delete|go|help|info> [<args>]
