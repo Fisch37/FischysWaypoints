@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListWaypoints implements CommandWithHelp{
+public class ListWaypoints implements CommandWithHelp, PermissibleCommand{
     private final WaypointsMap waypoints;
 
     public ListWaypoints(WaypointsMap waypoints){
@@ -51,5 +51,10 @@ public class ListWaypoints implements CommandWithHelp{
     @Override
     public String getPurposeLong() {
         return this.getPurpose();
+    }
+
+    @Override
+    public boolean hasPermission(CommandSender sender, Command command, String label, String[] args) {
+        return sender.hasPermission("waypoints.list");
     }
 }

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddWaypoint implements CommandWithHelp {
+public class AddWaypoint implements CommandWithHelp, PermissibleCommand {
     private final WaypointsMap waypoints;
 
     public AddWaypoint(WaypointsMap waypoints){
@@ -74,5 +74,10 @@ public class AddWaypoint implements CommandWithHelp {
     @Override
     public String getPurposeLong() {
         return this.getPurpose();
+    }
+
+    @Override
+    public boolean hasPermission(CommandSender sender, Command command, String label, String[] args) {
+        return sender.hasPermission("waypoints.add");
     }
 }

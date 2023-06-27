@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class DeleteWaypoint implements CommandWithHelp {
+public class DeleteWaypoint implements CommandWithHelp, PermissibleCommand {
     private final WaypointsMap waypoints;
 
     public DeleteWaypoint(WaypointsMap waypoints){
@@ -92,5 +92,10 @@ public class DeleteWaypoint implements CommandWithHelp {
     @Override
     public String getPurposeLong() {
         return this.getPurpose();
+    }
+
+    @Override
+    public boolean hasPermission(CommandSender sender, Command command, String label, String[] args) {
+        return sender.hasPermission("waypoints.delete") || sender.hasPermission("waypoints.delete.others");
     }
 }

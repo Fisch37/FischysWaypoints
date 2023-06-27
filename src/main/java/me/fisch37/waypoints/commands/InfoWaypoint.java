@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 
 import java.util.List;
 
-public class InfoWaypoint implements CommandWithHelp{
+public class InfoWaypoint implements CommandWithHelp, PermissibleCommand{
     private final WaypointsMap waypoints;
 
     public InfoWaypoint(WaypointsMap waypoints){
@@ -71,5 +71,10 @@ public class InfoWaypoint implements CommandWithHelp{
     @Override
     public String getPurposeLong() {
         return this.getPurpose();
+    }
+
+    @Override
+    public boolean hasPermission(CommandSender sender, Command command, String label, String[] args) {
+        return sender.hasPermission("waypoints.info");
     }
 }

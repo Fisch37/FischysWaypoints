@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.util.List;
 
-public class GoWaypoint implements CommandWithHelp {
+public class GoWaypoint implements CommandWithHelp, PermissibleCommand {
     private final WaypointsMap waypoints;
 
     public GoWaypoint(WaypointsMap waypoints){
@@ -71,5 +71,10 @@ public class GoWaypoint implements CommandWithHelp {
     @Override
     public String getPurposeLong(){
         return "Teleport to an existing waypoint. This may reduce your levels.";
+    }
+
+    @Override
+    public boolean hasPermission(CommandSender sender, Command command, String label, String[] args) {
+        return sender.hasPermission("waypoints.go");
     }
 }

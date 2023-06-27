@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class HelpWaypoint implements CommandWithHelp {
+public class HelpWaypoint implements CommandWithHelp, PermissibleCommand {
     private Map<String,TabExecutor> commands;
 
     public void setCommands(Map<String,TabExecutor> commands){
@@ -52,5 +52,10 @@ public class HelpWaypoint implements CommandWithHelp {
     @Override
     public String getPurposeLong() {
         return this.getPurpose();
+    }
+
+    @Override
+    public boolean hasPermission(CommandSender sender, Command command, String label, String[] args) {
+        return sender.hasPermission("waypoints.help");
     }
 }
