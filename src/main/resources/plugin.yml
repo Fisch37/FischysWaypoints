@@ -34,3 +34,6 @@ permissions:
   waypoints.info:
     description: Ability to see information about a waypoint
     default: true
+  waypoints.list:
+    description: Ability to list all waypoints
+    default: true
