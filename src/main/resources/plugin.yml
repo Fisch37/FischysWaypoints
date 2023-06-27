@@ -10,3 +10,27 @@ commands:
     aliases: wps
     description: Fischys Waypoint System
     usage: /wps <add|delete|go|help|info> [<args>]
+    permission: waypoints
+
+permissions:
+  waypoints:
+    description: Availability of /waypoints
+    default: true
+  waypoints.add:
+    description: Availability of /waypoints add
+    default: op
+  waypoints.delete:
+    description: Ability to delete own waypoints
+    default: true
+  waypoints.delete.others:
+    description: Ability to delete others' waypoints
+    default: op
+  waypoints.go:
+    description: Ability to teleport to waypoints
+    default: true
+  waypoints.help:
+    description: Ability to see the help page
+    default: true
+  waypoints.info:
+    description: Ability to see information about a waypoint
+    default: true
