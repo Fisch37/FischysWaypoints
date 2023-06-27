@@ -9,7 +9,7 @@ commands:
   waypoints:
     aliases: wps
     description: Fischys Waypoint System
-    usage: /wps <add|delete|go|help|info> [<args>]
+    usage: /wps <add|delete|go|help|list|info> [<args>]
     permission: waypoints
 
 permissions:
