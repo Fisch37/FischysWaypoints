@@ -22,11 +22,14 @@ public class HelpWaypoint implements CommandWithHelp, PermissibleCommand {
             String label,
             String[] args
     ) {
-        // TODO: Restrict shown commands to only show permitted
         sender.sendMessage("Help for Fischys Waypoints");
         sender.sendMessage("Arguments wrapped in []-brackets are optional");
         for (Map.Entry<String,TabExecutor> item : this.commands.entrySet()){
             if (item.getValue() instanceof CommandWithHelp subcommandHelp){
+                if (
+                        item.getValue() instanceof PermissibleCommand subcommandPerms &&
+                                !subcommandPerms.hasPermission(sender,command,label,args)
+                ) continue;
                 sender.sendMessage(subcommandHelp.getUsage() + ": " + subcommandHelp.getPurpose());
             } else{
                 sender.sendMessage("No help defined for subcommand "+item.getKey());
