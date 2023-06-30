@@ -6,9 +6,12 @@ import me.fisch37.waypoints.WaypointsMap;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SetWaypoint implements CommandWithHelp, PermissibleCommand{
@@ -86,8 +89,43 @@ public class SetWaypoint implements CommandWithHelp, PermissibleCommand{
             String label,
             String[] args
     ) {
-        return null;
+        switch (args.length) {
+            case 2 -> {
+                ArrayList<String> worldNames = new ArrayList<>();
+                for (World world : Bukkit.getWorlds()) worldNames.add(world.getName());
+                return worldNames;
+            }
+//            case 3 -> {
+//                return getPositionCompletion(sender, 0);
+//            }
+//            case 4 -> {
+//                return getPositionCompletion(sender, 1);
+//            }
+//            case 5 -> {
+//                return getPositionCompletion(sender, 2);
+//            }
+            default -> {
+                return new ArrayList<>();
+            }
+        }
     }
+
+//    private List<String> getPositionCompletion(CommandSender sender, int posIndex){
+//        // posIndex isn't a byte because passing literal bytes would probably cause more CPU lag than 4 bytes of memory make up for
+//        List<String> output = new ArrayList<>();
+//
+//        Location location = null;
+//        if (sender instanceof BlockCommandSender blockCommandSender)
+//            location = blockCommandSender.getBlock().getLocation();
+//        if (sender instanceof Player player) location = player.getLocation();
+//        if (location != null) output.add(String.format(
+//                "%d ".repeat(3-posIndex),
+//                location.getBlockX(),
+//                location.getBlockY(),
+//                location.getBlockZ()
+//        ));
+//        return output;
+//    }
 
     @Override
     public String getUsage() {
