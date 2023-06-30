@@ -17,7 +17,8 @@ public class WaypointsCommand extends SubcommandGroup {
                 "delete", new DeleteWaypoint(waypoints),
                 "go", new GoWaypoint(waypoints),
                 "info", new InfoWaypoint(waypoints),
-                "help", new HelpWaypoint()
+                "help", new HelpWaypoint(),
+                "set", new SetWaypoint(waypoints)
         ));
         ((HelpWaypoint) subcommands.get("help")).setCommands(subcommands);
     }
